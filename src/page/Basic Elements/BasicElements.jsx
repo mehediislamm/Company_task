@@ -1,6 +1,9 @@
+import Swal from "sweetalert2";
+import useAxiosPublic from "../../hook/useAxiosPublic";
 
 
 const BasicElements = () => {
+    const AxiosPublic = useAxiosPublic()
     const handleSubmitForm = (e) => {
         e.preventDefault();
         const form = e.target;
@@ -27,20 +30,19 @@ const BasicElements = () => {
         e.target.reset();
         console.log(createData);
 
-        // fetch("https://online-group-study.vercel.app/api/v1/create-assignments", {
-        //     method: "POST",
-        //     headers: {
-        //         "Content-Type": "application/json",
-        //     },
-        //     body: JSON.stringify(createData),
-        // })
-        //     .then((res) => res.json())
-        //     .then((data) => {
-        //         console.log(data);
-        //         if (data.acknowledged == true) {
-        //             swal("Good job!", "Added Producted Successfull", "success");
-        //         }
-        //     });
+        AxiosPublic.post('/', createData)
+        .then(res => {
+            if (res.data.insertedId) {
+                console.log('user added to the data base ');
+                Swal.fire({
+                    position: "top-end",
+                    icon: "success",
+                    title: "Your work has been saved",
+                    showConfirmButton: false,
+                    timer: 1500
+                });
+            }
+        })
     };
 
 
