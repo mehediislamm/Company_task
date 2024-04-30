@@ -7,6 +7,7 @@ import { LuKanbanSquareDashed } from "react-icons/lu";
 import { TfiWidget } from "react-icons/tfi";
 import { CiMap, CiViewTable } from "react-icons/ci";
 import { MdOutlineMenuOpen } from "react-icons/md";
+import Navber from "../../Navber/Navber";
 
 
 
@@ -290,7 +291,7 @@ const Dashboard = () => {
 
             {/* dashboard content  */}
             <div className="grid p-8 ">
-
+                <Navber></Navber>
                 <Outlet></Outlet>
             </div>
         </div>
